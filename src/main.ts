@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core'
+import { Component } from '@angular/core'
 import { bootstrapApplication } from '@angular/platform-browser'
 // biome-ignore lint/style/useImportType: Angular needs this to not be a type-only import
 import { UnleashService } from './app/unleash.service'
