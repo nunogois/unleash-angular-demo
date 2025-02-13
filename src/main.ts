@@ -8,9 +8,9 @@ import { UnleashService } from './app/unleash.service'
   template: `
     @if (loading()) {
     <p>Loading...</p>
-    } @else {
-    <p [style.color]="enabled() ? 'green' : 'red'">
-      {{ enabled() ? 'Feature is enabled!' : 'Feature is disabled.' }}
+    } @else { @let isEnabled = this.client.isEnabled('unleash-angular-demo');
+    <p [style.color]="isEnabled ? 'green' : 'red'">
+      {{ isEnabled ? 'Feature is enabled!' : 'Feature is disabled.' }}
     </p>
     }
   `
@@ -18,7 +18,6 @@ import { UnleashService } from './app/unleash.service'
 export class PlaygroundComponent {
   client = this.unleashService.getClient()
   loading = () => !this.client.isReady()
-  enabled = () => this.client.isEnabled('unleash-angular-demo')
 
   constructor(private unleashService: UnleashService) {}
 }
